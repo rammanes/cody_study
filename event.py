@@ -10,19 +10,21 @@ class BinarySearchEvent(tk.Tk):
         self.title("Binary Search")
         label = tk.Label(self, text = "Enter an item")
         label.grid(row = 0, column = 0)
-        label2 = tk.Label(self, text="Enter a search item")
-        label2.grid(row=1, column=0)
         BinarySearchEvent.first_entry = tk.Entry(self, width = 20)
-        BinarySearchEvent.first_entry.grid(row = 1, column = 1)
-        BinarySearchEvent.search_entry = tk.Entry(self, width=20)
-        BinarySearchEvent.search_entry.grid(row=0, column=1)
-        add_button = tk.Button(self, text = "add", command = add_item)
-        add_button.grid(row = 2, column = 0)
-        add_button = tk.Button(self, text="search", command=search_item)
-        add_button.grid(row=2, column=1)
+        BinarySearchEvent.first_entry.grid(row = 0, column = 1)
+        label2 = tk.Label(self, text ="Enter a search element")
+        label2.grid(row = 1, column=0)
+        BinarySearchEvent.element = tk.Entry(self, width=20)
+        BinarySearchEvent.element.grid(row= 1, column= 1)
+        add_button = tk.Button(self, text="add", command=add_item)
+        add_button.grid(row=2, column=0)
+        search_button = tk.Button(self, text="search", command=search_item)
+        search_button.grid(row=2, column=1)
+
 
 
 items = []
+element = 6
 
 
 def add_item():
@@ -32,10 +34,9 @@ def add_item():
 
 
 def search_item():
-    element = BinarySearchEvent.search_entry.get()
-    print(items)
+    search_element = BinarySearchEvent.element.get()
     bsearch = BinarySearch(items)
-    result = bsearch.binary_search(int(element))
+    result = bsearch.binary_search(int(search_element))
     if result != -1:
         print("Element is present at index " + str(result))
     else:
